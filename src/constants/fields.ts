@@ -1,19 +1,21 @@
-export const fields = [
+import { FieldType } from '@/interfaces'
+
+export const FIELDS = [
 	{
 		label: 'Text elements',
 		elements: [
 			{
-				id: 'short_answer',
+				type: FieldType.SHORT_ANSWER,
 				name: 'Short Answer',
 				icon: 'type',
 			},
 			{
-				id: 'paragraph',
+				type: FieldType.PARAGRAPH,
 				name: 'Paragraph',
 				icon: 'align-left',
 			},
 			{
-				id: 'email',
+				type: FieldType.EMAIL,
 				name: 'Email',
 				icon: 'mail',
 			},
@@ -23,12 +25,12 @@ export const fields = [
 		label: 'Number elements',
 		elements: [
 			{
-				id: 'number',
+				type: FieldType.NUMBER,
 				name: 'Number',
 				icon: 'sigma',
 			},
 			{
-				id: 'phone',
+				type: FieldType.PHONE,
 				name: 'Phone',
 				icon: 'phone',
 			},
@@ -38,12 +40,12 @@ export const fields = [
 		label: 'Multiple choice',
 		elements: [
 			{
-				id: 'select',
+				type: FieldType.SELECT,
 				name: 'Select',
 				icon: 'square-mouse-pointer',
 			},
 			{
-				id: 'checkbox',
+				type: FieldType.CHECKBOX,
 				name: 'Checkbox',
 				icon: 'check-check',
 			},
@@ -53,9 +55,9 @@ export const fields = [
 		label: 'Other',
 		elements: [
 			{
-				id: 'date',
+				type: FieldType.DATE,
 				name: 'Date',
-				icon: 'square-mouse-pointer',
+				icon: 'calendar-days',
 			},
 		],
 	},

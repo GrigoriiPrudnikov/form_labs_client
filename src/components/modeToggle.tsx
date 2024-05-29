@@ -2,14 +2,14 @@
 
 import { useTheme } from 'next-themes'
 
-import { Button } from '@/components/ui/button'
 import {
+	Button,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import Icon from './icon'
+} from '@/components/ui'
+import { Icon } from '.'
 
 export function ModeToggle() {
 	const { setTheme } = useTheme()

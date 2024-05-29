@@ -1,32 +1,49 @@
-import { fields } from '@/constants'
+'use client'
+
+import { FIELDS } from '@/constants'
+import { useFormStore } from '@/state'
 import { FC } from 'react'
-import Icon from './icon'
-import { Button, Card, Input } from './ui'
+import { Icon } from '.'
+import { Button, Card, Input, ScrollArea } from './ui'
 
-export const Sidebar: FC = () => (
-	<Card className='w-full h-full p-4 flex flex-col gap-4'>
-		<Input placeholder='Search fields' />
-		<div className='flex flex-col gap-4'>
-			{fields.map(group => (
-				<div key={group.label}>
-					<div className='text-sm text-center text-zinc-500'>
-						{group.label}
-					</div>
-					<div className='flex flex-col gap-2'>
-						{group.elements.map(elem => (
-							<Button
-								key={elem.id}
-								variant='outline'
-								className='flex justify-start h-12 px-2 gap-2'
-							>
-								<Icon name={elem.icon} />
+export const Sidebar: FC = () => {
+	const addField = useFormStore(state => state.addField)
 
-								{elem.name}
-							</Button>
-						))}
-					</div>
+	return (
+		<Card className='w-full h-full p-4 flex flex-col gap-4'>
+			<Input placeholder='Search fields' />{' '}
+			<ScrollArea className='h-full'>
+				<div className='flex flex-col gap-4'>
+					{FIELDS.map(group => (
+						<div key={group.label}>
+							<div className='text-sm text-center text-zinc-500'>
+								{group.label}
+							</div>
+							<div className='flex flex-col gap-2'>
+								{group.elements.map(elem => (
+									<Button
+										key={elem.type}
+										variant='outline'
+										className='flex justify-start h-12 px-2 gap-2'
+										onClick={() =>
+											addField({
+												id: Math.random(),
+												label: '',
+												type: elem.type,
+												isRequired: false,
+											})
+										}
+									>
+										<Icon name={elem.icon} />
+
+										{elem.name}
+									</Button>
+								))}
+							</div>
+						</div>
+					))}
 				</div>
-			))}
-		</div>
-	</Card>
-)
+			</ScrollArea>
+		</Card>
+	)
+}

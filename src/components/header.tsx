@@ -2,8 +2,8 @@ import { cn } from '@/lib/utils'
 import { JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
 import { FC } from 'react'
+import { ModeToggle } from '.'
 import { Button } from './ui'
-import { ModeToggle } from './modeToggle'
 
 const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] })
 
