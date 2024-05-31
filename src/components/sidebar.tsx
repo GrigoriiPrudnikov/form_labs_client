@@ -7,7 +7,7 @@ import { Icon } from '.'
 import { Button, Card, Input, ScrollArea } from './ui'
 
 export const Sidebar: FC = () => {
-	const addField = useFormStore(state => state.addField)
+	const addField = useFormStore(state => state.createField)
 
 	return (
 		<Card className='w-full h-full p-4 flex flex-col gap-4'>

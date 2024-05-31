@@ -14,4 +14,3 @@ export const Icon = memo(({ name, ...props }: IconProps) => {
 })
 
 Icon.displayName = 'Icon'
-

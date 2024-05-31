@@ -17,10 +17,12 @@ export default function Page() {
 			{/* Design */}
 			<div className='w-1/2 h-[calc(100vh-5.5rem)]'>
 				<Card className='w-full h-full'>
-					<ScrollArea className='h-full w-full p-4'>
-						{fields.map(elem => (
-							<DesignField key={elem.id} field={elem} />
-						))}
+					<ScrollArea className='h-full w-full'>
+						<div className=' p-4 flex flex-col gap-4'>
+							{fields.map(elem => (
+								<DesignField key={elem.id} field={elem} />
+							))}
+						</div>
 					</ScrollArea>
 				</Card>
 			</div>
