@@ -5,34 +5,23 @@ import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Button,
-  Card,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  Input,
-  Switch,
+    Button,
+    Card,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    Input,
+    Switch,
 } from './ui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FieldIcon } from './fieldIcon'
-import { Icon } from './icon'
 import { useFormStore } from '@/state'
+import { DeleteFieldIcon } from './deleteFieldIcon'
 
 const formSchema = z.object({
-  label: z.string().min(3, {
-    message: 'Label must be at least 3 symbols',
-  }),
+  label: z.string(),
   placeholder: z.string(),
   description: z.string(),
   isRequired: z.boolean(),
@@ -55,6 +44,9 @@ export const DesignField: FC<{ field: IField }> = ({
       placeholder: placeholder,
       description: description,
       isRequired: isRequired,
+      from: field?.options?.from,
+      to: field?.options?.to,
+      items: field?.options?.items,
     },
   })
   const { updateField, deleteField } = useFormStore((store) => store)
@@ -67,7 +59,7 @@ export const DesignField: FC<{ field: IField }> = ({
     })
     console.log(values)
   }
-
+  
   return (
     <Card className="p-4">
       <Form {...form}>
@@ -162,30 +154,29 @@ export const DesignField: FC<{ field: IField }> = ({
                 />
               </div>
             )}
+            {(field.type === FieldType.SELECT ||
+              field.type === FieldType.CHECKBOX) && (
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center">
+                  <FormField
+                    control={form.control}
+                    name="items"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Field items</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter item name" {...field} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  ></FormField>
+                  <Button>Add</Button>
+                </div>
+              </div>
+            )}
           </div>
-          <div className="flex justify-between">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline" size="icon" className="h-8 w-8">
-                  <Icon name="trash" color="red" className="h-4 w-4" />
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    this field and remove it from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => deleteField(field)}>
-                    Delete
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+          <div className="flex justify-between items-center">
+            <DeleteFieldIcon field={field} deleteField={deleteField} />
             <Button type="submit">Save</Button>
           </div>
         </form>

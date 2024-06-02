@@ -36,21 +36,21 @@ export const FIELDS = [
       },
     ],
   },
-  {
-    label: 'Multiple choice',
-    elements: [
-      {
-        type: FieldType.SELECT,
-        name: 'Select',
-        icon: 'square-mouse-pointer',
-      },
-      {
-        type: FieldType.CHECKBOX,
-        name: 'Checkbox',
-        icon: 'check-check',
-      },
-    ],
-  },
+  // {
+  //   label: 'Multiple choice',
+  //   elements: [
+  //     {
+  //       type: FieldType.SELECT,
+  //       name: 'Select',
+  //       icon: 'square-mouse-pointer',
+  //     },
+  //     {
+  //       type: FieldType.CHECKBOX,
+  //       name: 'Checkbox',
+  //       icon: 'check-check',
+  //     },
+  //   ],
+  // },
   {
     label: 'Other',
     elements: [
