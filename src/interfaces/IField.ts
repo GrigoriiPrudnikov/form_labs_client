@@ -4,8 +4,6 @@ export enum FieldType {
   EMAIL = 'Email',
   NUMBER = 'Number',
   PHONE = 'Phone',
-  SELECT = 'Select',
-  CHECKBOX = 'Checkbox',
   DATE = 'Date',
 }
 

@@ -8,8 +8,6 @@ export const FieldIcon = ({ type }: { type: FieldType }) => {
     [FieldType.EMAIL]: 'mail',
     [FieldType.NUMBER]: 'sigma',
     [FieldType.PHONE]: 'phone',
-    [FieldType.SELECT]: 'square-mouse-pointer',
-    [FieldType.CHECKBOX]: 'check-check',
     [FieldType.DATE]: 'calendar-days',
   }[type]
 

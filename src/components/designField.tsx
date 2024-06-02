@@ -154,26 +154,6 @@ export const DesignField: FC<{ field: IField }> = ({
                 />
               </div>
             )}
-            {(field.type === FieldType.SELECT ||
-              field.type === FieldType.CHECKBOX) && (
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center">
-                  <FormField
-                    control={form.control}
-                    name="items"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Field items</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter item name" {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  ></FormField>
-                  <Button>Add</Button>
-                </div>
-              </div>
-            )}
           </div>
           <div className="flex justify-between items-center">
             <DeleteFieldIcon field={field} deleteField={deleteField} />
