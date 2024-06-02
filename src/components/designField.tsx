@@ -5,15 +5,15 @@ import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import {
-    Button,
-    Card,
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    Input,
-    Switch,
+  Button,
+  Card,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  Input,
+  Switch,
 } from './ui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FieldIcon } from './fieldIcon'
@@ -59,7 +59,7 @@ export const DesignField: FC<{ field: IField }> = ({
     })
     console.log(values)
   }
-  
+
   return (
     <Card className="p-4">
       <Form {...form}>
