@@ -10,15 +10,15 @@ export enum FieldType {
 }
 
 export interface IField {
-	id: number
+	id: string
 	type: FieldType
 	label: string
-	description?: string
-	placeholder?: string
+	description: string
+	placeholder: string
 	isRequired: boolean
 	options?: {
-		min?: number
-		max?: number
+		from?: number
+		to?: number
 		items?: string[]
 	}
 }
