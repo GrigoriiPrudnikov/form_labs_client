@@ -5,8 +5,8 @@ import { type ThemeProviderProps } from 'next-themes/dist/types'
 import { FC } from 'react'
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
-	children,
-	...props
+  children,
+  ...props
 }: ThemeProviderProps) => (
-	<NextThemesProvider {...props}>{children}</NextThemesProvider>
+  <NextThemesProvider {...props}>{children}</NextThemesProvider>
 )

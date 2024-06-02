@@ -7,30 +7,27 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], weight: ['400', '800'] })
 
 export const metadata: Metadata = {
-	title: 'form_labs',
+  title: 'form_labs',
 }
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode
+  children: React.ReactNode
 }>) {
-	return (
-		<html lang='en'>
-			<body
-				className={cn(
-					'w-screen min-h-screen bg-white dark:bg-black text-black dark:text-white',
-					inter.className
-				)}
-			>
-				<ThemeProvider
-					attribute='class'
-					defaultTheme='dark'
-				>
-						<Header />
-						{children}
-				</ThemeProvider>
-			</body>
-		</html>
-	)
+  return (
+    <html lang="en">
+      <body
+        className={cn(
+          'w-screen min-h-screen bg-white dark:bg-black text-black dark:text-white',
+          inter.className,
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <Header />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
 }

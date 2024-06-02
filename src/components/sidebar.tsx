@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { FIELDS } from "@/constants";
-import { useFormStore } from "@/state";
-import { nanoid } from "nanoid";
-import { FC } from "react";
-import { Icon } from ".";
-import { Button, Card, Input, ScrollArea } from "./ui";
+import { FIELDS } from '@/constants'
+import { useFormStore } from '@/state'
+import { nanoid } from 'nanoid'
+import { FC } from 'react'
+import { Icon } from '.'
+import { Button, Card, Input, ScrollArea } from './ui'
 
 export const Sidebar: FC = () => {
-  const addField = useFormStore((state) => state.createField);
+  const addField = useFormStore((state) => state.createField)
 
   return (
     <Card className="w-full h-full p-4 flex flex-col gap-4">
-      <Input placeholder="Search fields" />{" "}
+      <Input placeholder="Search fields" />{' '}
       <ScrollArea className="h-full">
         <div className="flex flex-col gap-4">
           {FIELDS.map((group) => (
@@ -29,7 +29,7 @@ export const Sidebar: FC = () => {
                     onClick={() =>
                       addField({
                         id: nanoid(),
-                        label: "",
+                        label: '',
                         placeholder: '',
                         description: '',
                         type: elem.type,
@@ -48,5 +48,5 @@ export const Sidebar: FC = () => {
         </div>
       </ScrollArea>
     </Card>
-  );
-};
+  )
+}
