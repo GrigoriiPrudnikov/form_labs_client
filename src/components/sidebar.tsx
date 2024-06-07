@@ -12,7 +12,6 @@ export const Sidebar: FC = () => {
 
   return (
     <Card className="w-full h-full p-4 flex flex-col gap-4">
-      <Input placeholder="Search fields" />{' '}
       <ScrollArea className="h-full">
         <div className="flex flex-col gap-4">
           {FIELDS.map((group) => (

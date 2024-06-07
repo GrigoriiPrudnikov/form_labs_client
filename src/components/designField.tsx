@@ -1,6 +1,6 @@
 'use client'
 
-import { FieldType, IField } from '@/interfaces'
+import { IField } from '@/interfaces'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -27,7 +27,6 @@ const formSchema = z.object({
   isRequired: z.boolean(),
   from: z.number().optional(),
   to: z.number().optional(),
-  items: z.string().array().optional(),
 })
 
 export const DesignField: FC<{ field: IField }> = ({
@@ -46,7 +45,6 @@ export const DesignField: FC<{ field: IField }> = ({
       isRequired: isRequired,
       from: field?.options?.from,
       to: field?.options?.to,
-      items: field?.options?.items,
     },
   })
   const { updateField, deleteField } = useFormStore((store) => store)
@@ -125,9 +123,8 @@ export const DesignField: FC<{ field: IField }> = ({
                 </FormItem>
               )}
             />
-            {field.type === FieldType.NUMBER && (
+            {/* {field.type === FieldType.NUMBER && (
               <div className="flex justify-between">
-                {/*  className='flex items-center gap-2' */}
                 <FormField
                   control={form.control}
                   name="from"
@@ -153,7 +150,7 @@ export const DesignField: FC<{ field: IField }> = ({
                   )}
                 />
               </div>
-            )}
+            )} */}
           </div>
           <div className="flex justify-between items-center">
             <DeleteFieldIcon field={field} deleteField={deleteField} />

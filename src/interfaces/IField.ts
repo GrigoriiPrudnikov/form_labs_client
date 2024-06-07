@@ -4,7 +4,7 @@ export enum FieldType {
   EMAIL = 'Email',
   NUMBER = 'Number',
   PHONE = 'Phone',
-  DATE = 'Date',
+  // DATE = 'Date',
 }
 
 export interface IField {
@@ -17,6 +17,5 @@ export interface IField {
   options?: {
     from?: number
     to?: number
-    items?: string[]
   }
 }

@@ -10,13 +10,14 @@ import {
 import { Icon } from '.'
 import { Button, AlertDialogHeader, AlertDialogFooter } from './ui'
 import { IField } from '@/interfaces'
+import { FC } from 'react'
 
 interface Props {
   field: IField
   deleteField: (field: IField) => void
 }
 
-export const DeleteFieldIcon = ({ field, deleteField }: Props) => (
+export const DeleteFieldIcon: FC<Props> = ({ field, deleteField }: Props) => (
   <AlertDialog>
     <AlertDialogTrigger asChild>
       <Button variant="outline" size="icon" className="h-8 w-8">

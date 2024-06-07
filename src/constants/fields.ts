@@ -51,14 +51,14 @@ export const FIELDS = [
   //     },
   //   ],
   // },
-  {
-    label: 'Other',
-    elements: [
-      {
-        type: FieldType.DATE,
-        name: 'Date',
-        icon: 'calendar-days',
-      },
-    ],
-  },
+  // {
+  //   label: 'Other',
+  //   elements: [
+  //     {
+  //       type: FieldType.DATE,
+  //       name: 'Date',
+  //       icon: 'calendar-days',
+  //     },
+  //   ],
+  // },
 ] as const
