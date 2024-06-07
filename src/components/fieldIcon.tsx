@@ -8,7 +8,7 @@ export const FieldIcon = ({ type }: { type: FieldType }) => {
     [FieldType.EMAIL]: 'mail',
     [FieldType.NUMBER]: 'sigma',
     [FieldType.PHONE]: 'phone',
-    [FieldType.DATE]: 'calendar-days',
+    // [FieldType.DATE]: 'calendar-days',
   }[type]
 
   return (
