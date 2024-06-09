@@ -7,7 +7,7 @@ import { Button } from './ui'
 
 const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] })
 
-export const Header: FC = () => (
+export const HomeHeader: FC = () => (
   <header className="px-4 w-full h-14 flex justify-between items-center border-b border-zinc-200 dark:border-zinc-800">
     <div className="flex items-center gap-4">
       <div className={cn('text-xl', jetbrains_mono.className)}>

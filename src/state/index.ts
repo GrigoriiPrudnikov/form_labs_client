@@ -1,17 +1,26 @@
 import { IField } from '@/interfaces'
+import { nanoid } from 'nanoid'
 import { create } from 'zustand'
 
-interface FormState {
+interface State {
+  id: string
+  name: string
   fields: IField[]
+}
+
+interface Action {
+  updateName: (name: string) => void
   createField: (field: IField) => void
   updateField: (field: IField) => void
   deleteField: (field: IField) => void
 }
 
-export const useFormStore = create<FormState>()((set) => ({
+export const useFormStore = create<State & Action>()((set) => ({
+  id: nanoid(),
+  name: 'Untitled form',
   fields: [],
-  createField: (field) =>
-    set((state) => ({ fields: [...state.fields, field] })),
+  updateName: (name: string) => set({ name }),
+  createField: (field) => set((state) => ({ fields: [...state.fields, field] })),
   updateField: (field) =>
     set((state) => ({
       fields: state.fields.map((elem) => (elem.id === field.id ? field : elem)),

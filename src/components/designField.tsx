@@ -24,9 +24,7 @@ const formSchema = z.object({
   label: z.string(),
   placeholder: z.string(),
   description: z.string(),
-  isRequired: z.boolean(),
-  from: z.number().optional(),
-  to: z.number().optional(),
+  isRequired: z.boolean()
 })
 
 export const DesignField: FC<{ field: IField }> = ({
@@ -42,9 +40,7 @@ export const DesignField: FC<{ field: IField }> = ({
       label: label,
       placeholder: placeholder,
       description: description,
-      isRequired: isRequired,
-      from: field?.options?.from,
-      to: field?.options?.to,
+      isRequired: isRequired
     },
   })
   const { updateField, deleteField } = useFormStore((store) => store)
