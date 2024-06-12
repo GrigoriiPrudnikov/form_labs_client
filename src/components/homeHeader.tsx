@@ -37,7 +37,6 @@ export const HomeHeader: FC = () => (
       <Button asChild>
         <Link href="/signup">Sign up</Link>
       </Button>
-      <ModeToggle />
     </div>
   </header>
 )
