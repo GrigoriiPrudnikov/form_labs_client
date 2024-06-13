@@ -33,8 +33,6 @@ import {
 } from './ui'
 import { cn } from '@/lib/utils'
 
-const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] })
-
 const formSchema = z.object({
   name: z.string().refine((val) => !isEmpty(val.trim()), {
     message: 'Name cannot be empty',
@@ -65,7 +63,7 @@ export const DesignHeader: FC = () => {
     navigator.clipboard.writeText(`https://form-labs/form/${state.id}`)
     toast({
       title: 'Link copied!',
-      description: 'Now you can share it to others!'
+      description: 'Now you can share it to others!',
     })
   }
 
@@ -78,7 +76,7 @@ export const DesignHeader: FC = () => {
           </Link>
         </Button>
         <div className="flex items-center gap-2">
-          <div className={cn(jetbrains_mono.className, 'text-2xl')}>{state.name}</div>
+          <div className="text-2xl">{state.name}</div>
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" size="sm">
@@ -131,7 +129,7 @@ export const DesignHeader: FC = () => {
             </DialogHeader>
             <div className="flex items-center gap-4">
               <Input defaultValue={`https://form-labs/form/${state.id}`} readOnly />
-              <Button size="icon" onClick={onCopy} className='px-3'>
+              <Button size="icon" onClick={onCopy} className="px-3">
                 <Icon name="copy" className="h-4 w-4" />
               </Button>
             </div>
