@@ -1,5 +1,3 @@
-'use client'
-
 import { DesignHeader, FormDesign, FormResponse } from '@/components'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui'
 

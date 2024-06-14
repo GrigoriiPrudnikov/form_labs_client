@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import { DesignField, PreviewField, Sidebar } from '.'
 import { Button, Card, Form, ScrollArea } from './ui'
