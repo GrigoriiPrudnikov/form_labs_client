@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils'
-import { JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Button } from './ui'
