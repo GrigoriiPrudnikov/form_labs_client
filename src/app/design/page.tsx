@@ -1,5 +1,6 @@
-import { DesignHeader, FormDesign, FormResponse } from '@/components'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui'
+import { FormDesign, FormResponse } from '@/components'
+import { DesignHeader } from '@/components/headers'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui'
 
 export default function Page() {
   return (

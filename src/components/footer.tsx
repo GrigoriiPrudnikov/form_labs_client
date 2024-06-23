@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import { FC } from 'react'
 import { Button } from './ui'
-import Link from 'next/link'
 
 export const Footer: FC = () => (
   <footer className="p-4 text-center text-zinc-500 dark:zinc-400 flex flex-col gap-4">

@@ -1,6 +1,5 @@
 export * from './deleteFieldIcon'
 export * from './designField'
-export * from './designHeader'
 export * from './fieldIcon'
 export * from './footer'
 export * from './formDesign'

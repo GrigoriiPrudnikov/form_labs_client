@@ -1,9 +1,14 @@
 'use client'
 
 import { IField } from '@/interfaces'
+import { useExandedFieldStore, useFormStore } from '@/state'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { Icon } from '.'
+import { DeleteFieldIcon } from './deleteFieldIcon'
+import { FieldIcon } from './fieldIcon'
 import {
   Button,
   Card,
@@ -13,18 +18,15 @@ import {
   FormItem,
   FormLabel,
   Input,
+  Label,
   Switch,
 } from './ui'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { FieldIcon } from './fieldIcon'
-import { useFormStore } from '@/state'
-import { DeleteFieldIcon } from './deleteFieldIcon'
 
 const formSchema = z.object({
   label: z.string(),
   placeholder: z.string(),
   description: z.string(),
-  isRequired: z.boolean()
+  isRequired: z.boolean(),
 })
 
 export const DesignField: FC<{ field: IField }> = ({
@@ -32,7 +34,7 @@ export const DesignField: FC<{ field: IField }> = ({
 }: {
   field: IField
 }) => {
-  const { label, placeholder, description, isRequired } = field
+  const { label, placeholder, description, isRequired, type, index } = field
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,22 +42,44 @@ export const DesignField: FC<{ field: IField }> = ({
       label: label,
       placeholder: placeholder,
       description: description,
-      isRequired: isRequired
+      isRequired: isRequired,
     },
   })
   const { updateField, deleteField } = useFormStore((store) => store)
+  const { id, setId } = useExandedFieldStore((store) => store)
+  const isExpanded = id === field.id
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     updateField({
       id: field.id,
-      type: field.type,
+      type: type,
+      index: index,
       ...values,
     })
-    console.log(values)
   }
 
+  const requiredMark = <span className="text-red-500">*</span>
+
+  if (!isExpanded)
+    return (
+      <Card
+        className="p-4 flex flex-col gap-2 cursor-grab"
+        onClick={() => setId(field.id)}
+      >
+        <Label htmlFor="field">
+          {label === '' ? 'Label' : label} {isRequired && requiredMark}
+        </Label>
+        <Input
+          id="field"
+          placeholder={type}
+          className="focus-visible:ring-0 focus-visible:ring-offset-0"
+          readOnly
+        />
+      </Card>
+    )
+
   return (
-    <Card className="p-4">
+    <Card className="p-4 flex flex-col gap-2 cursor-grab">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -119,37 +143,14 @@ export const DesignField: FC<{ field: IField }> = ({
                 </FormItem>
               )}
             />
-            {/* {field.type === FieldType.NUMBER && (
-              <div className="flex justify-between">
-                <FormField
-                  control={form.control}
-                  name="from"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>From</FormLabel>
-                      <FormControl>
-                        <Input placeholder="123" {...field} />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="to"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>To</FormLabel>
-                      <FormControl>
-                        <Input placeholder="123" {...field} />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-              </div>
-            )} */}
           </div>
           <div className="flex justify-between items-center">
-            <DeleteFieldIcon field={field} deleteField={deleteField} />
+            <div className="flex gap-2">
+              <DeleteFieldIcon field={field} deleteField={deleteField} />
+              {/* <Button variant="outline" size="icon" className="h-8 w-8">
+                <Icon name="copy" className="h-4 w-4" />
+              </Button> */}
+            </div>
             <Button type="submit">Save</Button>
           </div>
         </form>

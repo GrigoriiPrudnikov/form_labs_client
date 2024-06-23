@@ -1,16 +1,18 @@
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction,
-} from './ui'
-import { Icon } from '.'
-import { Button, AlertDialogHeader, AlertDialogFooter } from './ui'
 import { IField } from '@/interfaces'
 import { FC } from 'react'
+import { Icon } from '.'
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+    Button,
+} from './ui'
 
 interface Props {
   field: IField

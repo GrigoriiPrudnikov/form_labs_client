@@ -1,5 +1,5 @@
 import { Footer, HomeHeader } from '@/components'
-import { Badge, Button, Card, Input, Label } from '@/components/ui'
+import { Badge, Card } from '@/components/ui'
 
 export default function Home() {
   return (

@@ -14,6 +14,7 @@ export interface IField {
   description: string
   placeholder: string
   isRequired: boolean
+  index: number
   options?: {
     from?: number
     to?: number

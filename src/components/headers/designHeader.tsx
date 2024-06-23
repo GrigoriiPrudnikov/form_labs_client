@@ -3,13 +3,12 @@
 import { useFormStore } from '@/state'
 import { getAvatarFallback } from '@/utils/getAvatarFallback'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { isEmpty } from 'validator'
 import { z } from 'zod'
-import { Icon } from '.'
+import { Icon } from '..'
 import {
   Avatar,
   AvatarFallback,
@@ -30,8 +29,7 @@ import {
   FormMessage,
   Input,
   useToast,
-} from './ui'
-import { cn } from '@/lib/utils'
+} from '../ui'
 
 const formSchema = z.object({
   name: z.string().refine((val) => !isEmpty(val.trim()), {
@@ -90,7 +88,8 @@ export const DesignHeader: FC = () => {
                   <DialogHeader>
                     <DialogTitle>Edit form name</DialogTitle>
                     <DialogDescription>
-                      Make changes to your form name here. Click save when you are done.
+                      Make changes to your form name here. Click save when you
+                      are done.
                     </DialogDescription>
                   </DialogHeader>
                   <FormField
@@ -128,7 +127,11 @@ export const DesignHeader: FC = () => {
               </DialogDescription>
             </DialogHeader>
             <div className="flex items-center gap-4">
-              <Input defaultValue={`https://form-labs/form/${state.id}`} readOnly />
+              <Input
+                defaultValue={`https://form-labs/form/${state.id}`}
+                className="focus-visible:ring-0 focus-visible:ring-offset-0"
+                readOnly
+              />
               <Button size="icon" onClick={onCopy} className="px-3">
                 <Icon name="copy" className="h-4 w-4" />
               </Button>

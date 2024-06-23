@@ -6,14 +6,13 @@ export const getZodPrimitive = (type: FieldType, isRequired?: boolean) => {
   const primitive = {
     [FieldType.SHORT_ANSWER]: z.string(),
     [FieldType.PARAGRAPH]: z.string(),
-    [FieldType.EMAIL]: z.string().refine(isEmail, {
+    [FieldType.EMAIL]: z.string().email({
       message: 'Your input is not a valid email',
     }),
     [FieldType.NUMBER]: z.string().refine(isInt),
     [FieldType.PHONE]: z.string().refine(isMobilePhone, {
       message: 'Your input is not a valid phone number',
     }),
-    // [FieldType.DATE]: z.string().min(1, { message: 'Required' }),
   }[type]
 
   if (isRequired)
