@@ -1,12 +1,12 @@
 'use client'
 
-import { IField } from '@/interfaces'
+import { FieldType, IField } from '@/interfaces'
 import { useExandedFieldStore, useFormStore } from '@/state'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
+import { isEmpty } from 'validator'
 import { z } from 'zod'
-import { Icon } from '.'
 import { DeleteFieldIcon } from './deleteFieldIcon'
 import { FieldIcon } from './fieldIcon'
 import {
@@ -17,13 +17,23 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
   Input,
   Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   Switch,
+  useToast,
 } from './ui'
+import { Icon } from '.'
 
 const formSchema = z.object({
-  label: z.string(),
+  label: z.string().refine((val) => !isEmpty(val.trim()), {
+    message: 'Required',
+  }),
   placeholder: z.string(),
   description: z.string(),
   isRequired: z.boolean(),
@@ -48,6 +58,7 @@ export const DesignField: FC<{ field: IField }> = ({
   const { updateField, deleteField } = useFormStore((store) => store)
   const { id, setId } = useExandedFieldStore((store) => store)
   const isExpanded = id === field.id
+  const { toast } = useToast()
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     updateField({
@@ -55,6 +66,16 @@ export const DesignField: FC<{ field: IField }> = ({
       type: type,
       index: index,
       ...values,
+    })
+    toast({
+      title: 'Saved!',
+    })
+  }
+
+  const setFieldType = (type: FieldType) => {
+    updateField({
+      ...field,
+      type,
     })
   }
 
@@ -88,7 +109,28 @@ export const DesignField: FC<{ field: IField }> = ({
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <FieldIcon type={field.type} />
-              {field.type}
+              <Select onValueChange={setFieldType} defaultValue={field.type}>
+                <SelectTrigger className="h-8 w-48">
+                  <SelectValue placeholder="Field type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={FieldType.SHORT_ANSWER}>
+                    {FieldType.SHORT_ANSWER}
+                  </SelectItem>
+                  <SelectItem value={FieldType.PARAGRAPH}>
+                    {FieldType.PARAGRAPH}
+                  </SelectItem>
+                  <SelectItem value={FieldType.EMAIL}>
+                    {FieldType.EMAIL}
+                  </SelectItem>
+                  <SelectItem value={FieldType.NUMBER}>
+                    {FieldType.NUMBER}
+                  </SelectItem>
+                  <SelectItem value={FieldType.PHONE}>
+                    {FieldType.PHONE}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <FormField
               control={form.control}
@@ -116,6 +158,7 @@ export const DesignField: FC<{ field: IField }> = ({
                   <FormControl>
                     <Input placeholder="Label" {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />

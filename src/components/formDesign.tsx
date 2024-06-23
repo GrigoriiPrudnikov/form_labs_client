@@ -28,7 +28,7 @@ export const FormDesign: FC = () => {
 
   return (
     <main className="flex justify-center gap-4 p-4 pt-0">
-      <div className="w-1/3 flex flex-col gap-4">
+      <div className="w-2/5 flex flex-col gap-4">
         <Reorder.Group
           values={fields}
           onReorder={setFields}
