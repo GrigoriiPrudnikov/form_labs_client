@@ -194,7 +194,7 @@ export const DesignField: FC<{ field: IField }> = ({
                 <Icon name="copy" className="h-4 w-4" />
               </Button> */}
             </div>
-            <Button type="submit">Save</Button>
+            <Button type="submit" className='h-8'>Save</Button>
           </div>
         </form>
       </Form>
